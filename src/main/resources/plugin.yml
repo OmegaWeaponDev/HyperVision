@@ -1,0 +1,12 @@
+name: HyperVision
+version: 1.0.0
+main: me.omegaweapondev.hypervision.HyperVision
+description: A Simple NightVision Plugin
+author: OmegaWeaponDev
+api-version: 1.19
+
+softdepend: [PlaceholderAPI, Vault]
+
+permissions: {}
+
+commands: {}
