@@ -42,7 +42,7 @@ public class ConfigHandler {
         // Creates the config.yml, messages.yml & userData.yml if they don't already exist.
         getConfigFile().createConfig();
         getMessagesFile().createConfig();
-        getUseDataFile().createConfig();
+        getUserDataFile().createConfig();
     }
 
     /**
@@ -117,7 +117,7 @@ public class ConfigHandler {
      *
      * @return userDataFile
      */
-    public FileManager getUseDataFile() {
+    public FileManager getUserDataFile() {
         return useDataFile;
     }
 }

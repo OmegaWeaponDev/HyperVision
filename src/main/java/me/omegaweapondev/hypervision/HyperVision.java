@@ -1,10 +1,18 @@
 package me.omegaweapondev.hypervision;
 
+import me.omegaweapondev.hypervision.commands.CoreCommand;
+import me.omegaweapondev.hypervision.commands.LimitCommand;
+import me.omegaweapondev.hypervision.commands.ListCommand;
+import me.omegaweapondev.hypervision.commands.NightVisionCommand;
 import me.omegaweapondev.hypervision.configs.ConfigHandler;
+import me.omegaweapondev.hypervision.configs.MessageHandler;
+import me.omegaweapondev.hypervision.configs.UserDataHandler;
+import me.omegaweapondev.hypervision.events.PlayerListener;
 import me.omegaweapondev.hypervision.utilities.Placeholders;
 import me.omegaweapondev.omegalibs.OmegaLibs;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
+import org.bukkit.Utility;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -19,6 +27,8 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 public class HyperVision extends JavaPlugin {
     private ConfigHandler configHandler;
+    private MessageHandler messageHandler;
+    private UserDataHandler userDataHandler;
     private static Economy econ = null;
 
     @Override
@@ -28,6 +38,10 @@ public class HyperVision extends JavaPlugin {
         configHandler = new ConfigHandler(this);
         configHandler.createFiles();
         configHandler.fileUpdater();
+
+        messageHandler = new MessageHandler(this, configHandler.getMessagesFile().getConfig());
+        userDataHandler = new UserDataHandler(this);
+
 
         // Print a message to console once the plugin has enabled
         OmegaLibs.logInfo(false,
@@ -49,20 +63,56 @@ public class HyperVision extends JavaPlugin {
         } else {
             new Placeholders(this).register();
         }
+
+        registerCommands();
+        registerEvents();
+        setupEconomy();
+
+        userDataHandler.populateUserDataMap();
     }
 
     @Override
     public void onDisable() {
-        super.onDisable();
+       getUserDataHandler().saveUserDataToFile();
+       Bukkit.getScheduler().cancelTasks(this);
     }
 
     public void onReload() {
         getConfigHandler().reloadFiles();
     }
 
-    public void registerCommands() {}
+    /**
+     *
+     * Registers all the commands for the plugin
+     *
+     */
+    public void registerCommands() {
 
-    public void registerEvents() {}
+        try {
+            OmegaLibs.logInfo(true, "HyperVision is now attempting to register it's commands...");
+
+            OmegaLibs.setCommand().put("hypervision", new CoreCommand(this));
+            OmegaLibs.setCommand().put("nightvisionlist", new ListCommand(this));
+            OmegaLibs.setCommand().put("nightvisionlimit", new LimitCommand(this));
+            OmegaLibs.setCommand().put("nightvision", new NightVisionCommand(this));
+
+            OmegaLibs.registerCommands();
+            OmegaLibs.logInfo(true, "HyperVision has successfully registered all of the commands.");
+        } catch (Exception exception) {
+            OmegaLibs.logWarning(true, "HyperVision has failed to register all of it's commands");
+            exception.printStackTrace();
+        }
+
+    }
+
+    /**
+     *
+     * Registers all the events for the plugin
+     *
+     */
+    public void registerEvents() {
+        OmegaLibs.registerEvents(new PlayerListener(this));
+    }
 
     /**
      *
@@ -82,11 +132,25 @@ public class HyperVision extends JavaPlugin {
         return econ != null;
     }
 
+
+    /**
+     *
+     * Simple getter methods that are used throughout the plugin.
+     *
+     */
     public ConfigHandler getConfigHandler() {
         return configHandler;
     }
 
-    public static Economy getEcon() {
+    public MessageHandler getMessageHandler() {
+        return messageHandler;
+    }
+
+    public UserDataHandler getUserDataHandler() {
+        return userDataHandler;
+    }
+
+    public Economy getEcon() {
         return econ;
     }
 }

@@ -7,6 +7,109 @@ api-version: 1.19
 
 softdepend: [PlaceholderAPI, Vault]
 
-permissions: {}
+commands:
+  hypervision:
+    description: HyperVision's core command
+    aliases: [hv, hyperv, hvision]
+    usage: /hypervision <args>
+  nighvision:
+    description: HyperVision's NightVision command
+    aliases: [nv, nvision, nightv]
+    usage: /nightvision
+    permission: hypervision.nightvision.toggle.self
+    permission-message: Sorry, you do not have permission to use this command
+  nightvisionlist:
+    description: Command to list all users with night vision
+    aliases: [nvl, nvlist]
+    usage: /nightivisonlist
+    permission: hypervision.nightvision.list
+    permission-message: Sorry, you do not have permission to use this command
+  nightvisionlimit:
+    description: HyperVision's NightVision limit command.
+    aliases: [nvlimit]
+    usage: /nightvisionlimit
+    permission: hyperivision.nightivision.limit
+    permission-message: Sorry, you do not have permission to use this command
 
-commands: {}
+permissions:
+  hypervision.admin:
+    description: The wildcard permission to give all the plugin permissions.
+    default: false
+    children:
+      - hypervision.version
+      - hypervision.reload
+      - hypervision.nightvision.admin
+      - hypervision.limit.admin
+  hypervision.nightvision.admin:
+    description: The wildcard permission to give all the night vision permissions.
+    default: false
+    children:
+      - hypervision.nightvision.toggle.self
+      - hypervision.nightvision.toggle.others
+      - hypervision.nightvision.global
+      - hypervision.nightvision.temp
+      - hypervision.nightvision.particles.bypass
+      - hypervision.nightvision.world.bypass
+      - hypervision.nightvision.list
+      - hypervision.nightvision.login
+      - hypervision.nightvision.keepondeath
+      - hypervision.nightvision.bucket
+      - hypervision.nightvision.global.alert
+      - hypervision.nightvision.cost.bypass
+  hypervision.limit.admin:
+    description: The wildcard permission to give all the limit permissions.
+    default: false
+    children:
+      - hypervision.limit.check.self
+      - hypervision.limit.check.others
+      - hypervision.limit.reset
+      - hypervision.limit.bypass
+  hypervision.reload:
+    description: The permission required to reload the plugin.
+    default: false
+  hypervision.nightvision.toggle.self:
+    description: The permission required to toggle your own night vision on and off.
+    default: false
+  hypervision.nightvision.toggle.others:
+    description: The permission required to toggle night vision for other players.
+    default: false
+  hypervision.nightvision.toggle.global:
+    description: The permission required to toggle night vision for all players currently online.
+    default: false
+  hypervision.nightvision.toggle.temp:
+    description: The permission required to toggle night vision temporarily for a player.
+    default: false
+  hypervision.nightvision.particles.bypass:
+    description: The permission required to bypass the night vision particle effects.
+    default: false
+  hypervision.nightvision.world.bypass:
+    description: The permission required to bypass the disabled worlds for night vision.
+    default: false
+  hypervision.nightvision.list:
+    description: The permission required to list all players who currently have night vision.
+    default: false
+  hypervision.nightvision.bucket:
+    description: The permission required to use the bucket feature to remove potion particle effects.
+    default: false
+  hypervision.nightvision.keepondeath:
+    description: The permission required to keep night vision on death.
+    default: false
+  hypervision.nightvision.global.alert:
+    description: The permission required to view night vision global messages.
+    default: false
+  hypervision.nightvision.cost.bypass:
+    description: The permission required to bypass the night vision cost.
+    default: false
+  hypervision.limit.check.self:
+    description: The permission required to check your own night vision limit status.
+    default: false
+  hypervision.limit.check.others:
+    description: The permission required to check another players night vision limit status.
+    default: false
+  hypervision.limit.reset:
+    description: The permission required to reset a players night vision limit status.
+    default: false
+  hypervision.limit.bypass:
+    description: The permission required to bypass the night vision limit amount
+    default: false
+

@@ -44,7 +44,8 @@ tasks.withType<ShadowJar> {
     listOf("com.tchristofferson",
            "org.bstats",
            "me.omegaweapondev.omegalibs",
-           "dev.dbassett"
+           "dev.dbassett",
+           "com.zaxxer"
     ).forEach { relocate(it, "me.omegaweapondev.hypervision.libs.$it") }
 
     archiveFileName.set("HyperVision-${project.version}.jar")
