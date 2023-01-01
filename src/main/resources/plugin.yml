@@ -11,25 +11,15 @@ commands:
   hypervision:
     description: HyperVision's core command
     aliases: [hv, hyperv, hvision]
-    usage: /hypervision <args>
   nightvision:
     description: HyperVision's NightVision command
     aliases: [nv, nvision, nightv]
-    usage: /nightvision
-    permission: hypervision.nightvision.toggle.self
-    permission-message: Sorry, you do not have permission to use this command
   nightvisionlist:
     description: Command to list all users with night vision
     aliases: [nvl, nvlist]
-    usage: /nightivisonlist
-    permission: hypervision.nightvision.list
-    permission-message: Sorry, you do not have permission to use this command
   nightvisionlimit:
     description: HyperVision's NightVision limit command.
     aliases: [nvlimit]
-    usage: /nightvisionlimit
-    permission: hyperivision.nightivision.limit
-    permission-message: Sorry, you do not have permission to use this command
 
 permissions:
   hypervision.admin:
