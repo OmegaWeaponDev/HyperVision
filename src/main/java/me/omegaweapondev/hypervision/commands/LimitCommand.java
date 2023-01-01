@@ -30,7 +30,7 @@ public class LimitCommand extends GlobalCommand implements TabCompleter {
      *
      * @param plugin (The plugin's instance)
      */
-    public LimitCommand(final HyperVision plugin) {
+    public LimitCommand(final @NotNull HyperVision plugin) {
         messagesHandler = plugin.getMessageHandler();
         configFile = plugin.getConfigHandler().getConfigFile().getConfig();
         userDataHandler = plugin.getUserDataHandler();

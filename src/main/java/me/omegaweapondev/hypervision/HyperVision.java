@@ -45,7 +45,7 @@ public class HyperVision extends JavaPlugin {
 
         // Print a message to console once the plugin has enabled
         OmegaLibs.logInfo(false,
-            "_   _ _   _",
+            " _   _ _   _",
             "| | | | | | |",
             "| |_| | | | |  HyperVision v" + this.getDescription().getVersion() + " by OmegaWeaponDev",
             "|  _  | | | |  Running on version: " + Bukkit.getVersion(),

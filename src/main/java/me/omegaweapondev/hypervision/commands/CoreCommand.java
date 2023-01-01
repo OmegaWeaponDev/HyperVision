@@ -78,7 +78,7 @@ public class CoreCommand extends GlobalCommand implements TabCompleter {
         }
 
         if (sender instanceof ConsoleCommandSender) {
-            OmegaLibs.logInfo(true, "#86DE0FHyperVision #CA002Ev" + plugin.getDescription().getVersion() + " #86DE0FBy OmegaWeaponDev");
+            OmegaLibs.logInfo(true, "HyperVision v" + plugin.getDescription().getVersion() + " By OmegaWeaponDev");
         }
     }
 

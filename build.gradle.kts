@@ -36,10 +36,6 @@ tasks.withType<JavaCompile> {
     options.release.set(17)
 }
 
-tasks.withType<ProcessResources> {
-    filteringCharset = Charsets.UTF_8.name()
-}
-
 tasks.withType<ShadowJar> {
     listOf("com.tchristofferson",
            "org.bstats",
@@ -48,5 +44,5 @@ tasks.withType<ShadowJar> {
            "com.zaxxer"
     ).forEach { relocate(it, "me.omegaweapondev.hypervision.libs.$it") }
 
-    archiveFileName.set("HyperVision-${project.version}.jar")
+    archiveFileName.set("${project.name}-${project.version}.jar")
 }
