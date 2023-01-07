@@ -56,8 +56,8 @@ public class NightVisionToggle {
         particleEffects = configFile.getBoolean("Night_Vision_Settings.Particle_Effects");
         particleAmbients = configFile.getBoolean("Night_Vision_Settings.Particle_Ambient");
         nightVisionIcon = configFile.getBoolean("Night_Vision_Settings.Night_Vision_Icon");
-        nightVisionApplied = messagesHandler.string("Night_Vision_Messages.Night_Vision_Applied", "#2b9bbfNight Vision has been applied!");
-        nightVisionRemoved = messagesHandler.string("Night_Vision_Messages.Night_Vision_Removed", "#f63e3eNight Vision has been removed!");
+        nightVisionApplied = messagesHandler.string("Night_Vision_Messages.Night_Vision_Applied", "&#2b9bbfNight Vision has been applied!");
+        nightVisionRemoved = messagesHandler.string("Night_Vision_Messages.Night_Vision_Removed", "&#f63e3eNight Vision has been removed!");
     }
 
     /**

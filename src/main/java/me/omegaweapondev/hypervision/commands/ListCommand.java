@@ -45,16 +45,16 @@ public class ListCommand extends GlobalCommand implements TabCompleter {
 
             // Check if the player has permission to use the list command
             if(!OmegaLibs.checkPermissions(player, true, "hypervision.nightvision.list", "hypervision.nightvision.admin", "hypervision.admin")) {
-                OmegaLibs.message(player, messagesHandler.string("No_Permission", "#f63e3eSorry, but you don't have permission to do that."));
+                OmegaLibs.message(player, messagesHandler.string("No_Permission", "&#f63e3eSorry, but you don't have permission to do that."));
                 return;
             }
 
             // Send a list of the players who currently have night vision enabled.
-            OmegaLibs.message(player, messagesHandler.getPrefix() + "#00D4FFThe following players have night vision enabled:", getPlayerList());
+            OmegaLibs.message(player, messagesHandler.getPrefix() + "&#00D4FFThe following players have night vision enabled:", getPlayerList(false));
             return;
         }
 
-        OmegaLibs.logInfo(true, "The following players have night vision enabled:", getPlayerList());
+        OmegaLibs.logInfo(true, "The following players have night vision enabled:", getPlayerList(true));
     }
 
     /**
@@ -63,7 +63,7 @@ public class ListCommand extends GlobalCommand implements TabCompleter {
      *
      * @return (A list of all the players who currently have night vision enabled.)
      */
-    private String getPlayerList() {
+    private String getPlayerList(final boolean bInConsole) {
         if(Bukkit.getOnlinePlayers().size() == 0)
         {
             return "There are currently no players online!";
@@ -84,12 +84,30 @@ public class ListCommand extends GlobalCommand implements TabCompleter {
             }
         }
 
-        // Loop through the list created above and add the names into a string
         StringBuilder playerList = new StringBuilder();
-        for(String playerName : nightVisionList) {
-            playerList.append(playerName).append(", ");
+        // Loop through the list created above and add the names into a string
+        if(bInConsole) {
+            if(nightVisionList.size() == 1) {
+                playerList.append(nightVisionList.get(0));
+                return playerList.toString();
+            }
+
+            for(String playerName : nightVisionList) {
+                playerList.append(playerName).append(", ");
+            }
+            return playerList.toString();
         }
 
+        if(nightVisionList.size() == 1) {
+            for(String playerName : nightVisionList) {
+                playerList.append("&#FF4A4A").append(playerName);
+            }
+            return playerList.toString();
+        }
+
+        for(String playerName : nightVisionList) {
+            playerList.append("&#FF4A4A").append(playerName).append("&#14ABC9, ");
+        }
         return playerList.toString();
     }
 

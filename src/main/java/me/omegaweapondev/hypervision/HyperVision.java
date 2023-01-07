@@ -12,7 +12,6 @@ import me.omegaweapondev.hypervision.utilities.Placeholders;
 import me.omegaweapondev.omegalibs.OmegaLibs;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
-import org.bukkit.Utility;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -42,18 +41,6 @@ public class HyperVision extends JavaPlugin {
         messageHandler = new MessageHandler(this, configHandler.getMessagesFile().getConfig());
         userDataHandler = new UserDataHandler(this);
 
-
-        // Print a message to console once the plugin has enabled
-        OmegaLibs.logInfo(false,
-            " _   _ _   _",
-            "| | | | | | |",
-            "| |_| | | | |  HyperVision v" + this.getDescription().getVersion() + " by OmegaWeaponDev",
-            "|  _  | | | |  Running on version: " + Bukkit.getVersion(),
-            "| | | \\ \\_/ /",
-            "\\_| |_/\\___/",
-            ""
-        );
-
         // Check if PlaceholderAPI is installed. If so, register the plugins placeholders
         if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") == null) {
             OmegaLibs.logWarning(true,
@@ -69,6 +56,17 @@ public class HyperVision extends JavaPlugin {
         setupEconomy();
 
         userDataHandler.populateUserDataMap();
+
+        // Print a message to console once the plugin has enabled
+        OmegaLibs.logInfo(false,
+                " _   _ _   _",
+                "| | | | | | |",
+                "| |_| | | | |  HyperVision v" + this.getDescription().getVersion() + " by OmegaWeaponDev",
+                "|  _  | | | |  Running on version: " + Bukkit.getVersion(),
+                "| | | \\ \\_/ /",
+                "\\_| |_/\\___/",
+                ""
+        );
     }
 
     @Override

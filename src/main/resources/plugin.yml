@@ -26,34 +26,37 @@ permissions:
     description: The wildcard permission to give all the plugin permissions.
     default: false
     children:
-      - hypervision.version
-      - hypervision.reload
-      - hypervision.nightvision.admin
-      - hypervision.limit.admin
+      hypervision.version: true
+      hypervision.reload: true
+      hypervision.nightvision.admin: true
+      hypervision.limit.admin: true
   hypervision.nightvision.admin:
     description: The wildcard permission to give all the night vision permissions.
     default: false
     children:
-      - hypervision.nightvision.toggle.self
-      - hypervision.nightvision.toggle.others
-      - hypervision.nightvision.global
-      - hypervision.nightvision.temp
-      - hypervision.nightvision.particles.bypass
-      - hypervision.nightvision.world.bypass
-      - hypervision.nightvision.list
-      - hypervision.nightvision.login
-      - hypervision.nightvision.keepondeath
-      - hypervision.nightvision.bucket
-      - hypervision.nightvision.global.alert
-      - hypervision.nightvision.cost.bypass
+      hypervision.nightvision.toggle.self: true
+      hypervision.nightvision.toggle.others: true
+      hypervision.nightvision.global: true
+      hypervision.nightvision.temp: true
+      hypervision.nightvision.particles.bypass: true
+      hypervision.nightvision.world.bypass: true
+      hypervision.nightvision.list: true
+      hypervision.nightvision.login: true
+      hypervision.nightvision.keepondeath: true
+      hypervision.nightvision.bucket: true
+      hypervision.nightvision.global.alert: true
+      hypervision.nightvision.cost.bypass: true
   hypervision.limit.admin:
     description: The wildcard permission to give all the limit permissions.
     default: false
     children:
-      - hypervision.limit.check.self
-      - hypervision.limit.check.others
-      - hypervision.limit.reset
-      - hypervision.limit.bypass
+      hypervision.limit.check.self: true
+      hypervision.limit.check.others: true
+      hypervision.limit.reset: true
+      hypervision.limit.bypass: true
+  hypervision.version:
+    description: The permission required to use the version command
+    default: false
   hypervision.reload:
     description: The permission required to reload the plugin.
     default: false

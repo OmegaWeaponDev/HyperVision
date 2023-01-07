@@ -69,11 +69,11 @@ public class CoreCommand extends GlobalCommand implements TabCompleter {
      */
     private void versionCommand(final CommandSender sender) {
         if(sender instanceof Player player) {
-            if (OmegaLibs.checkPermissions(player, true, "hypervision.version", "hypervision.admin")) {
-                OmegaLibs.message(player, messageHandler.getPrefix() + "#86DE0FHyperVision #CA002Ev" + plugin.getDescription().getVersion() + " #86DE0FBy OmegaWeaponDev");
+            if (!OmegaLibs.checkPermissions(player, true, "hypervision.version", "hypervision.admin")) {
+                OmegaLibs.message(player, messageHandler.string("No_Permission", "&#f63e3eSorry, but you don't have permission to do that."));
                 return;
             }
-            OmegaLibs.message(player, messageHandler.string("No_Permission", "#f63e3eSorry, but you don't have permission to do that."));
+            OmegaLibs.message(player, messageHandler.getPrefix() + "&#86DE0FHyperVision &#CA002Ev" + plugin.getDescription().getVersion() + " &#86DE0FBy OmegaWeaponDev");
             return;
         }
 
@@ -90,17 +90,17 @@ public class CoreCommand extends GlobalCommand implements TabCompleter {
      */
     private void reloadCommand(final CommandSender sender) {
         if(sender instanceof Player player) {
-           if (OmegaLibs.checkPermissions(player, true, "hypervision.reload","hypervision.admin")) {
-                OmegaLibs.message(player, messageHandler.string("Plugin_Reload", "#f63e3eHyperVision has successfully been reloaded."));
-                plugin.onReload();
-                return;
+            if (!OmegaLibs.checkPermissions(player, true, "hypervision.reload","hypervision.admin")) {
+               OmegaLibs.message(player, messageHandler.string("No_Permission", "&#f63e3eSorry, but you don't have permission to do that."));
+               return;
             }
-           OmegaLibs.message(player, messageHandler.string("No_Permission", "#f63e3eSorry, but you don't have permission to do that."));
+            plugin.onReload();
+            OmegaLibs.message(player, messageHandler.string("Plugin_Reload", "&#f63e3eHyperVision has successfully been reloaded."));
            return;
         }
         if(sender instanceof ConsoleCommandSender) {
             plugin.onReload();
-            OmegaLibs.logInfo(true, messageHandler.console("Plugin_Reload", "#f63e3eSorry, but you don't have permission to do that."));
+            OmegaLibs.logInfo(true, "HyperVision has successfully been reloaded.");
         }
     }
 
@@ -114,22 +114,28 @@ public class CoreCommand extends GlobalCommand implements TabCompleter {
         StringBuilder plugins = new StringBuilder();
 
         if(sender instanceof Player player) {
+
+            if (!OmegaLibs.checkPermissions(player, true, "hypervision.debug", "hypervision.admin")) {
+                OmegaLibs.message(player, messageHandler.string("No_Permission", "&#f63e3eSorry, but you don't have permission to do that."));
+                return;
+            }
+
             for(Plugin installedPlugins : Bukkit.getPluginManager().getPlugins()) {
-                plugins.append("#FF4A4A").append(installedPlugins.getName()).append(" ").append(installedPlugins.getDescription().getVersion()).append("#14ABC9, ");
+                plugins.append("&#FF4A4A").append(installedPlugins.getName()).append(" ").append(installedPlugins.getDescription().getVersion()).append("&#14ABC9, ");
             }
 
             OmegaLibs.message(player,
-                    "#14abc9===========================================",
-                    " #6928f7HyperVision #ff4a4av" + plugin.getDescription().getVersion() + " #14abc9By OmegaWeaponDev",
-                    "#14abc9===========================================",
-                    " #14abc9Server Brand: #ff4a4a" + Bukkit.getName(),
-                    " #14abc9Server Version: #ff4a4a" + Bukkit.getServer().getVersion(),
-                    " #14abc9Online Mode: #ff4a4a" + Bukkit.getOnlineMode(),
-                    " #14abc9Players Online: #ff4a4a" + Bukkit.getOnlinePlayers().size() + " / " + Bukkit.getMaxPlayers(),
-                    " #14abc9HyperVision Commands: #ff4a4a" + OmegaLibs.setCommand().size() + " / 4 #14abc9registered",
-                    " #14abc9Currently Installed Plugins...",
+                    "&#14abc9===========================================",
+                    " &#6928f7HyperVision &#ff4a4av" + plugin.getDescription().getVersion() + " &#14abc9By OmegaWeaponDev",
+                    "&#14abc9===========================================",
+                    " &#14abc9Server Brand: &#ff4a4a" + Bukkit.getName(),
+                    " &#14abc9Server Version: &#ff4a4a" + Bukkit.getServer().getVersion(),
+                    " &#14abc9Online Mode: &#ff4a4a" + Bukkit.getOnlineMode(),
+                    " &#14abc9Players Online: &#ff4a4a" + Bukkit.getOnlinePlayers().size() + " / " + Bukkit.getMaxPlayers(),
+                    " &#14abc9HyperVision Commands: &#ff4a4a" + OmegaLibs.setCommand().size() + " / 4 &#14abc9registered",
+                    " &#14abc9Currently Installed Plugins...",
                     " " + plugins,
-                    "#14abc9==========================================="
+                    "&#14abc9==========================================="
             );
             return;
         }
@@ -164,17 +170,17 @@ public class CoreCommand extends GlobalCommand implements TabCompleter {
         if(sender instanceof Player player) {
 
             OmegaLibs.message(player,
-                    messageHandler.getPrefix() + "#86DE0FReload Command: #CA002E/hypervision reload",
-                    messageHandler.getPrefix() + "#86DE0FVersion Command: #CA002E/hypervision version",
-                    messageHandler.getPrefix() + "#86DE0FHelp Command: #CA002E/hypervision help",
-                    messageHandler.getPrefix() + "#86DE0FNight Vision Toggle Command: #CA002E/nightvision",
-                    messageHandler.getPrefix() + "#86DE0FNight Vision Toggle Others Command: #CA002E/nightvision <player>",
-                    messageHandler.getPrefix() + "#86DE0FNight Vision Global Command: #CA002E/nightvision global add|remove",
-                    messageHandler.getPrefix() + "#86DE0FNight Vision Temp Command: #CA002E/nightvision <player> <time>",
-                    messageHandler.getPrefix() + "#86DE0FNight Vision List Command: #CA002E/nightvisionlist",
-                    messageHandler.getPrefix() + "#86DE0FNight Vision Limit Check Command: #CA002E/nightvisionlimit check",
-                    messageHandler.getPrefix() + "#86DE0FNight Vision Limit Check Others Command: #CA002E/nightvisionlimit check <player>",
-                    messageHandler.getPrefix() + "#86DE0FNight Vision Limit Reset Command: #CA002E/nightvisionlimit reset <player>"
+                    messageHandler.getPrefix() + "&#86DE0FReload Command: &#CA002E/hypervision reload",
+                    messageHandler.getPrefix() + "&#86DE0FVersion Command: &#CA002E/hypervision version",
+                    messageHandler.getPrefix() + "&#86DE0FHelp Command: &#CA002E/hypervision help",
+                    messageHandler.getPrefix() + "&#86DE0FNight Vision Toggle Command: &#CA002E/nightvision",
+                    messageHandler.getPrefix() + "&#86DE0FNight Vision Toggle Others Command: &#CA002E/nightvision <player>",
+                    messageHandler.getPrefix() + "&#86DE0FNight Vision Global Command: &#CA002E/nightvision global add|remove",
+                    messageHandler.getPrefix() + "&#86DE0FNight Vision Temp Command: &#CA002E/nightvision <player> <time>",
+                    messageHandler.getPrefix() + "&#86DE0FNight Vision List Command: &#CA002E/nightvisionlist",
+                    messageHandler.getPrefix() + "&#86DE0FNight Vision Limit Check Command: &#CA002E/nightvisionlimit check",
+                    messageHandler.getPrefix() + "&#86DE0FNight Vision Limit Check Others Command: &#CA002E/nightvisionlimit check <player>",
+                    messageHandler.getPrefix() + "&#86DE0FNight Vision Limit Reset Command: &#CA002E/nightvisionlimit reset <player>"
             );
             return;
         }
@@ -208,7 +214,7 @@ public class CoreCommand extends GlobalCommand implements TabCompleter {
     public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if(args.length <= 1) {
             return new TabCompleteBuilder(sender)
-                .checkCommand("version", true, "hypervision.version, hypervision.admin")
+                .checkCommand("version", true, "hypervision.version", "hypervision.admin")
                 .checkCommand("reload", true, "hypervision.reload", "hypervision.admin")
                 .checkCommand("debug", true, "hypervision.admin")
                 .build(args[0]);

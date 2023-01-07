@@ -75,8 +75,8 @@ public class NightVisionCommand extends GlobalCommand implements TabCompleter {
             if(!strings[1].equalsIgnoreCase("add") && !strings[1].equalsIgnoreCase("remove")) {
                 if(commandSender instanceof final Player player) {
                     OmegaLibs.message(player,
-                            "#2b9bbfNight Vision Global Command: #f63e3e/nightvision global add #2b9bbf- Adds night vision to add online players",
-                            "#2b9bbfNight Vision Global Command: #f63e3e/nightvision global remove #2b9bbf- Removes night vision from all online players"
+                            "&#2b9bbfNight Vision Global Command: &#f63e3e/nightvision global add &#2b9bbf- Adds night vision to add online players",
+                            "&#2b9bbfNight Vision Global Command: &#f63e3e/nightvision global remove &#2b9bbf- Removes night vision from all online players"
                     );
                 } else {
                     OmegaLibs.logWarning(true,
@@ -84,7 +84,6 @@ public class NightVisionCommand extends GlobalCommand implements TabCompleter {
                             "Night Vision Global Command: /nightvision global remove - Removes night vision from all online players"
                     );
                 }
-
             }
             // Call the night vision global method and pass it the second arg in the command
             nightVisionToggle.nightVisionToggleGlobal(strings[1]);
@@ -129,7 +128,6 @@ public class NightVisionCommand extends GlobalCommand implements TabCompleter {
                     .checkCommand(onlinePlayers, true, "hypervision.nightvision.toggle.others", "hypervision.nightvision.admin", "hypervision.admin")
                     .build(strings[0]);
         }
-
         if(strings.length == 2) {
             if(strings[0].equalsIgnoreCase("temp")) {
                 return new TabCompleteBuilder(commandSender)

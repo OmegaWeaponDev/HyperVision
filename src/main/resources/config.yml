@@ -40,6 +40,20 @@ Night_Vision_Settings:
     Enabled: false
     Amount: 10.0
 
+# Set the limit for how many times a player can use the night vision toggle command
+# Use the permission `omegavision.limit.bypass` to bypass the limit
+# Applies to toggling it on, not off
+Night_Vision_Limit:
+  # Whether you want to limit the night vision command use or not
+  Enabled: true
+
+  # The max limit amount
+  Limit: 5
+
+  # The Reset Timer (In minutes)
+  # The timer starts after the limit has been reached
+  Reset_Timer: 5
+
 # Play a special sound to a player when certain things happen
 # You can find all the sound effects here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Sound.html
 Sound_Effects:
