@@ -15,7 +15,6 @@ Below you can find all the different features that I've implemented into the plu
 | Keep Nightvision on Death | Allows the user to keep their nightvision on death. |
 | Enable/disable Potion Effects| Allows the user to enable or disable the icon, ambient particles and normal particles effects from when they activate nightvision. |
 | List all players with nightvision | Generate a list of all the online players who currently have nightvision enabled |
-| Blindness after Nightvision over use| Determine how long they can use nightvision before they get blinded (Blindness will take effect after nightvision is removed) |
 | Limit command usage | Apply a configurable limit to how many times a player can use the nightvision command to enable nightvision
 
 ***
