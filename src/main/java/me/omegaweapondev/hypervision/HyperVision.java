@@ -11,6 +11,7 @@ import me.omegaweapondev.hypervision.events.PlayerListener;
 import me.omegaweapondev.hypervision.utilities.Placeholders;
 import me.omegaweapondev.omegalibs.OmegaLibs;
 import net.milkbowl.vault.economy.Economy;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -40,6 +41,9 @@ public class HyperVision extends JavaPlugin {
 
         messageHandler = new MessageHandler(this, configHandler.getMessagesFile().getConfig());
         userDataHandler = new UserDataHandler(this);
+
+        int pluginId = 17446;
+        Metrics metrics = new Metrics(this, pluginId);
 
         // Check if PlaceholderAPI is installed. If so, register the plugins placeholders
         if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") == null) {

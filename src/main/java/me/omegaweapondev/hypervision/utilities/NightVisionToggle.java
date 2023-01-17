@@ -406,7 +406,7 @@ public class NightVisionToggle {
      * @return (True | false depending on the permission)
      */
     private boolean toggleTempPerm(final Player player) {
-        if(!OmegaLibs.checkPermissions(player, true, "hypervision.nightvision.temp", "hypervision.nightvision.admin", "hypervision.admin")) {
+        if(!OmegaLibs.checkPermissions(player, true, "hypervision.nightvision.toggle.temp", "hypervision.nightvision.admin", "hypervision.admin")) {
             OmegaLibs.message(player, messagesHandler.string("No_Permission", "#f63e3eSorry, but you don't have permission to do that."));
             return false;
         }

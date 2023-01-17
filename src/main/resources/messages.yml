@@ -10,7 +10,7 @@
 # Sets the plugins prefix to use in all the messages.
 # NOTE: A space will automatically be added after the prefix.
 # If set to 'none' it will disable the plugin prefix
-Plugin_Prefix: "&#8c8c8c[&#2b9bbf&lOV&#8c8c8c]"
+Plugin_Prefix: "&#8c8c8c[&#2b9bbf&lHV&#8c8c8c]"
 
 Night_Vision_Messages:
   # Sets the message for when pleased have night vision applied.
